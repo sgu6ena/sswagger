@@ -36,6 +36,11 @@
           "users"
         ],
         "summary": "Получение юзера по id",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "in": "path",
@@ -55,42 +60,11 @@
     }
   },
   "components": {
-    "schemas": {
-      "Auth": {
-        "type": "object",
-        "properties": {
-          "login": {
-            "type": "string",
-            "format": "string",
-            "example": "000000"
-          },
-          "password": {
-            "type": "string",
-            "format": "string",
-            "example": "666666"
-          }
-        }
-      },
-      "AuthOk": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "number",
-            "example": 200
-          },
-          "success": {
-            "type": "boolean"
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "token": {
-                "type": "string",
-                "example": "варыловарылоарлыовр"
-              }
-            }
-          }
-        }
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Вearer"
       }
     }
   }

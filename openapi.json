@@ -59,10 +59,19 @@
         ],
         "responses": {
           "200": {
-            "description": "Успешный запрос"
+            "description": "Успешный запрос",
+            "headers": {
+					    "Access-Control-Allow-Origin": {
+						    "type": "string"
+					      }
+              }
           },
           "401": {
-            "description": "Необходимо авторизироваться"
+            "description": "Необходимо авторизироваться",
+            "headers": {
+					    "Access-Control-Allow-Origin": {
+						    "type": "string"
+					}
           }
         }
       }

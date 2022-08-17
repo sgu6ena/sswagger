@@ -6,143 +6,49 @@
   },
   "servers": [
     {
-      "url": "https://api.portal.idc.md/api/"
-    }
+      "url": "https://dev.strada.one/api/"
+    },
+        {
+      "url": "https://strada.one/api/"
+    },
   ],
   "tags": [
     {
-      "name": "главная",
-      "description": "Информация для отображения на главной странице"
+      "name": "stream",
     },
     {
-      "name": "profile"
+      "name": "roadmap"
     },
     {
-      "name": "фильм"
+      "name": "invitation"
     },
     {
-      "name": "жанр"
+      "name": "tasks"
+    },
+    {
+      "name": "users"
     }
   ],
   "paths": {
-    "/main": {
-      "get": {
+    "/user/{id}": {
+       "get": {
         "tags": [
-          "главная"
+          "users"
         ],
-        "summary": "Получение информации для главной страницы",
-        "description": "Отображение подборок и слайдеров на главной",
-        "operationId": "getMain",
+        "summary": "Получение юзера по id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description": "Успешный запрос"
-          }
-        }
-      }
-    },
-    "/listFilter": {
-      "get": {
-        "tags": [
-          "главная"
-        ],
-        "summary": "Список фильтров",
-        "responses": {
-          "200": {
-            "description": "Успешный запрос"
-          }
-        }
-      }
-    },
-    "/get_token": {
-      "post": {
-        "tags": [
-          "profile"
-        ],
-        "summary": "Авторизация и получение токена",
-        "description": "Вход в аккаунт",
-        "operationId": "getToken",
-        "requestBody": {
-          "description": "Вход с помощью  логина и пароля. В качестве логина может быть и email",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Auth"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Успешная авторизация",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AuthOk"
-                }
-              }
-            }
-          },
-          "490": {
-            "description": "Указанный логин/email не существует"
-          }
-        }
-      }
-    },
-    "/getUserProfile": {
-      "get": {
-        "tags": [
-          "profile"
-        ],
-        "summary": "получение данных пользователя",
-        "responses": {
-          "200": {
-            "description": "Успешно"
-          },
-          "490": {
-            "description": "Отсутствует токен"
-          }
-        }
-      }
-    },
-    "/get_pass/:id": {
-      "get": {
-        "tags": [
-          "profile"
-        ],
-        "summary": "забыли пароль",
-        "responses": {
-          "200": {
-            "description": "Успешно"
-          },
-          "490": {
-            "description": "Отсутствует токен"
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "tags": [
-          "profile"
-        ],
-        "summary": "выйти",
-        "responses": {
-          "200": {
-            "description": "Успешно"
-          }
-        }
-      }
-    },
-    "/unsubscription": {
-      "get": {
-        "tags": [
-          "profile"
-        ],
-        "summary": "отказаться от подписки",
-        "responses": {
-          "200": {
-            "description": "Успешно"
           }
         }
       }

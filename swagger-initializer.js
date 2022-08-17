@@ -5,6 +5,7 @@ window.onload = function() {
   window.ui = SwaggerUIBundle({
     url: "https://raw.githubusercontent.com/sgu6ena/sswagger/master/openapi.json",
     dom_id: '#swagger-ui',
+    validatorUrl: null,
     deepLinking: true,
     presets: [
       SwaggerUIBundle.presets.apis,

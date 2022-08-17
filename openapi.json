@@ -1,20 +1,26 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Portal API",
+    "title": "strd API",
     "version": "0.0.1"
   },
   "servers": [
     {
       "url": "https://dev.strada.one/api/"
     },
-        {
+    {
       "url": "https://strada.one/api/"
     },
+    {
+      "url": "http://dev.strada.one/api/"
+    },
+    {
+      "url": "http://strada.one/api/"
+    }
   ],
   "tags": [
     {
-      "name": "stream",
+      "name": "stream"
     },
     {
       "name": "roadmap"
@@ -31,14 +37,14 @@
   ],
   "paths": {
     "/user/{id}": {
-       "get": {
+      "get": {
         "tags": [
           "users"
         ],
         "summary": "Получение юзера по id",
         "security": [
           {
-            "ApiKeyAuth": []
+            "bearerAuth": []
           }
         ],
         "parameters": [
@@ -54,6 +60,9 @@
         "responses": {
           "200": {
             "description": "Успешный запрос"
+          },
+          "401": {
+            "description": "Необходимо авторизироваться"
           }
         }
       }
@@ -61,10 +70,22 @@
   },
   "components": {
     "securitySchemes": {
-      "ApiKeyAuth": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "Вearer"
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "responses": {
+      "UnauthorizedError": {
+        "description": "API key is missing or invalid",
+        "headers": {
+          "WWW_Authenticate": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
       }
     }
   }

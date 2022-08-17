@@ -10,12 +10,6 @@
     },
     {
       "url": "https://strada.one/api/"
-    },
-    {
-      "url": "http://dev.strada.one/api/"
-    },
-    {
-      "url": "http://strada.one/api/"
     }
   ],
   "tags": [
@@ -59,19 +53,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Успешный запрос",
-            "headers": {
-					    "Access-Control-Allow-Origin": {
-						    "type": "string"
-					      }
-              }
+            "description": "Успешный запрос"
           },
           "401": {
-            "description": "Необходимо авторизироваться",
-            "headers": {
-					    "Access-Control-Allow-Origin": {
-						    "type": "string"
-					}
+            "description": "Необходимо авторизироваться"
           }
         }
       }
